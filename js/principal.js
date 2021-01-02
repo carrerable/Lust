@@ -17,7 +17,8 @@
     angular.module('Lust',['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
 
     	console.log("Js principal funcionando correctamente")
-    	$scope.provider = new firebase.auth.GoogleAuthProvider();
+    	var provider = new firebase.auth.GoogleAuthProvider();
+    	provider.addScope('https://www.googleapis.com/auth/plus.login');
     	
     	firebase.auth().languageCode = 'es';
 
@@ -88,7 +89,7 @@ $scope.authStateListener = function(user) {
 $scope.googleRegistro = function (){
 	console.log("Entro al registro de google ")
 
-firebase.auth().signInWithPopup($scope.provider).then(function(result) {
+firebase.auth().signInWithRedirect(provider).then(function(result) {
   // This gives you a Google Access Token. You can use it to access the Google API.
   var token = result.credential.accessToken;
   // The signed-in user info.
@@ -108,25 +109,6 @@ firebase.auth().signInWithPopup($scope.provider).then(function(result) {
 });
 
 }
-
-firebase.auth().getRedirectResult().then(function(result) {
-  if (result.credential) {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    var token = result.credential.accessToken;
-    // ...
-  }
-  // The signed-in user info.
-  var user = result.user;
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
-});
 
 
     })
