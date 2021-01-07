@@ -36,6 +36,8 @@
    			// The signed-in user info.
    			var user = result.user;
    			// ...
+            alert("Inicio de sesion Correcto")
+            console.log("Inicio de sesion de google correcto user : "+ user)
    		}).catch(function(error) {
    			// Handle Errors here.
    			var errorCode = error.code;
