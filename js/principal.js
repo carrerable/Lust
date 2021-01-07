@@ -21,9 +21,8 @@
    			var uid = user.uid;
             
             $scope.UsuarioLogueado = true;
-            console.log("Variable UsuarioLogueado : " +$scope.UsuarioLogueado)   
-            
-            
+            console.log("Variable UsuarioLogueado : " +$scope.UsuarioLogueado)
+               
    			console.log("User id observador " + uid)
    			console.log("El usuario esta loogueado")
 
