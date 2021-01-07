@@ -33,6 +33,7 @@
    			// ...
             console.log("Sin User id observador")
             console.log("El usuario no esta loogueado")
+            $scope.UsuarioLogueado = false; 
    		}
    	});
    	$scope.registrarseGoogle = function() {
