@@ -20,7 +20,8 @@
    			// https://firebase.google.com/docs/reference/js/firebase.User
    			var uid = user.uid;
             if(uid){
-            $scope.UsuarioLogueado = true;   
+            $scope.UsuarioLogueado = true;
+            console.log("Variable UsuarioLogueado : " +$scope.UsuarioLogueado)   
             }
             
    			console.log("User id observador " + uid)
