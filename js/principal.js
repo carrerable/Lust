@@ -13,7 +13,7 @@
    angular.module('modulo', ['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
    	console.log("Js Principal Cargado con exito")
    	var provider = new firebase.auth.GoogleAuthProvider();
-       	
+
       firebase.auth().onAuthStateChanged((user) => {
    		if (user) {
    			// User is signed in, see docs for a list of available properties
@@ -22,7 +22,6 @@
             
             $scope.UsuarioLogueado = true;
             console.log("Variable UsuarioLogueado : " +$scope.UsuarioLogueado)
-
    			console.log("User id observador " + uid)
    			console.log("El usuario esta loogueado")
 
