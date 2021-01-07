@@ -13,11 +13,16 @@
    angular.module('modulo', ['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
    	console.log("Js Principal Cargado con exito")
    	var provider = new firebase.auth.GoogleAuthProvider();
-   	firebase.auth().onAuthStateChanged((user) => {
+   	
+      firebase.auth().onAuthStateChanged((user) => {
    		if (user) {
    			// User is signed in, see docs for a list of available properties
    			// https://firebase.google.com/docs/reference/js/firebase.User
    			var uid = user.uid;
+            if(uid){
+            $scope.UsuarioLogueado = true;   
+            }
+            
    			console.log("User id observador " + uid)
    			console.log("El usuario esta loogueado")
 
@@ -71,6 +76,7 @@
    	$scope.cerrarSesion = function() {
    		firebase.auth().signOut().then(function() {
    			// Sign-out successful.
+            alert("Cerraste sesion Correctamente")
    		}).catch(function(error) {
    			// An error happened.
    		});

@@ -58,9 +58,9 @@
           <li class="active"><a href="index.html">Inicio</a></li>
           <li><a href="#about">Nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
-          <li ng-if="!uid"><a href="#">Iniciar Sesion</a></li>
-          <li ng-if="!uid"><a href="registro.html">Registrarse</a></li>
-          <li ng-if="!uid"><a  href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
+          <li ng-if="!UsuarioLogueado"><a href="#">Iniciar Sesion</a></li>
+          <li ng-if="!UsuarioLogueado"><a href="registro.html">Registrarse</a></li>
+          <li ng-if="UsuarioLogueado == true"><a  href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
