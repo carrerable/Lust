@@ -17,8 +17,8 @@
    		if (user) {
    			// User is signed in, see docs for a list of available properties
    			// https://firebase.google.com/docs/reference/js/firebase.User
-   			$scope.uid = user.uid;
-   			console.log("User id observador " + $scope.uid)
+   			var uid = user.uid;
+   			console.log("User id observador " + uid)
    			console.log("El usuario esta loogueado")
 
    			// ...
