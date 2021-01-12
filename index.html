@@ -58,8 +58,8 @@
           <li class="active"><a href="index.html">Inicio</a></li>
           <li><a href="#about">Nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
-          <li ng-show="UsuarioLogueado == true"><a href="#">Iniciar Sesion</a></li>
-          <li ng-show="UsuarioLogueado == true"><a href="registro.html">Registrarse</a></li>
+          <li ng-show="!UsuarioLogueado"><a href="#">Iniciar Sesion</a></li>
+          <li ng-show="!UsuarioLogueado"><a href="registro.html">Registrarse</a></li>
           <li ng-show="UsuarioLogueado"><a  href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
         </ul>
       </nav><!-- .nav-menu -->
