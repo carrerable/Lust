@@ -96,6 +96,7 @@
         <table class="table table-striped table-dark table-bordered">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Nombre</th>
       <th>Genero</th>
       <th>Creador</th>
@@ -104,16 +105,52 @@
   </thead>
   <tbody>
     <tr ng-repeat="row in animesTablaPrincipal"  ng-init="pos = $index">
+      <td>{{row.id}}</td>
       <td>{{row.Nombre}}</td>
       <td>{{row.Genero}}</td>
       <td>{{row.Creador}}</td>
       <td>
-  <button type="button" class="btn btn-danger" ng-click="borrarRegistroAnimes()">Eliminar</button>
+  <button type="button" class="btn btn-danger" ng-click="borrarRegistroAnimes(row.id)">Eliminar</button>
 <button type="button" class="btn btn-warning">Editar</button>
       </td>
     </tr>
   </tbody>
 </table>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#AgregarAnimeModal">Agregar</button>
+<!-- Modal -->
+<div class="modal fade" id="AgregarAnimeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Anime</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nombre</label>
+    <input type="text" ng-model="nombreAnimeNuevo" class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Nombre del anime">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Genero</label>
+    <input type="text" ng-model="generoAnimeNuevo" required class="form-control" id="exampleInputPassword1" placeholder="Genero del anime">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Creador</label>
+    <input type="text" ng-model="creadorAnimeNuevo" required class="form-control" id="exampleInputPassword1" placeholder="Creador del anime">
+  </div>
+
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" ng-click="agregarAnimeNuevo()">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
        
 
  

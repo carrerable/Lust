@@ -11,36 +11,35 @@
    firebase.initializeApp(config);
    firebase.analytics();
    angular.module('modulo', ['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
-
- /*Obtiene toda la informacion del nodo de perfiles de la firebase*/
-
+      /*Obtiene toda la informacion del nodo de perfiles de la firebase*/
 
 
 
- let list = [];
-    const rootRefAnime = firebase.firestore().collection('Animes').get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log("Cargo Animes")
-        console.log(`${doc.id} => ${doc.data()}`);
-                list.push(doc.data());
-    });
-     $scope.animesTablaPrincipal = list;
-     console.log("Tabla animes cargada")
-      console.log($scope.animesTablaPrincipal)
-$scope.$apply();  
-});
 
 
-
-/*
-     console.log(rootRefAnime)
-    $scope.animesTablaPrincipal = $firebaseArray(rootRefAnime);
-    $scope.animesTablaPrincipal.$loaded().then(function() {
-      console.log("Tabla cargada con exito")
-*/
+//$scope.perfiles.$indexFor(index)
 
 
-
+      let list = [];
+      const rootRefAnime = firebase.firestore().collection('Animes').get().then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+            console.log("Cargo Animes")
+            console.log(`${doc.id} => ${doc.data()}`);
+            var obj = doc.data()
+        obj.id = doc.id;
+            list.push(obj);
+         });
+         $scope.animesTablaPrincipal = list;
+         console.log("Tabla animes cargada")
+         console.log($scope.animesTablaPrincipal)
+         $scope.$apply();
+      });
+      /*
+           console.log(rootRefAnime)
+          $scope.animesTablaPrincipal = $firebaseArray(rootRefAnime);
+          $scope.animesTablaPrincipal.$loaded().then(function() {
+            console.log("Tabla cargada con exito")
+      */
       console.log("Js Principal Cargado con exito")
       var provider = new firebase.auth.GoogleAuthProvider();
       $scope.UsuarioLogueado = false;
@@ -123,18 +122,45 @@ $scope.$apply();
             alert(errorMessage)
          });
       }
-
-
-
-
-      $scope.borrarRegistroAnimes = function (id){
+      $scope.borrarRegistroAnimes = function(id) {
          console.log("Se eliminara :" + id)
+         firebase.firestore().collection("Animes").doc(id).delete().then(function() {
+            console.log("Registro Eliminado Correctamente!");
+            location.reload();
+         }).catch(function(error) {
+            console.error("Error eliminando el registro : ", error);
+         });
+      }
+      $scope.agregarAnimeNuevo = function() {
+         if($scope.animesTablaPrincipal.length ==0){
+var doc = 0
+doc = doc.toString()
+         }else{
+            var doc = $scope.animesTablaPrincipal.length+1
+            doc = doc.toString()
+         }
 
-         firebase.firestore().collection("Animes").doc("b32Y1yD4rl3csjsJ8DVJ").delete().then(function() {
-    console.log("Registro Eliminado Correctamente!");
-}).catch(function(error) {
-    console.error("Error eliminando el registro : ", error);
+         console.log(doc);
+
+          firebase.firestore().collection("Animes").add({
+    Nombre: $scope.nombreAnimeNuevo,
+    Genero: $scope.generoAnimeNuevo,
+    Creador:$scope.creadorAnimeNuevo
+})
+.then(function() {
+    console.log("Document successfully written!");
+    alert("Se guardo el registro de forma exitosa")
+    $scope.nombreAnimeNuevo ="";
+    $scope.generoAnimeNuevo="";
+    $scope.creadorAnimeNuevo="";
+    location.reload();
+
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
+    alert("Error al intentar guarda registro nuevo")
 });
+
 
       }
    })
