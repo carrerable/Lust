@@ -13,18 +13,23 @@
    angular.module('modulo', ['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
 
  /*Obtiene toda la informacion del nodo de perfiles de la firebase*/
+
+
+
+
  let list = [];
     const rootRefAnime = firebase.firestore().collection('Animes').get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       console.log("Cargo Animes")
         console.log(`${doc.id} => ${doc.data()}`);
-        list.push(doc.data());
+                list.push(doc.data());
     });
      $scope.animesTablaPrincipal = list;
      console.log("Tabla animes cargada")
-console.log($scope.animesTablaPrincipal)
-$scope.$apply();
+      console.log($scope.animesTablaPrincipal)
+$scope.$apply();  
 });
+
 
 
 /*
@@ -117,5 +122,19 @@ $scope.$apply();
             var errorMessage = error.message;
             alert(errorMessage)
          });
+      }
+
+
+
+
+      $scope.borrarRegistroAnimes = function (id){
+         console.log("Se eliminara :" + id)
+
+         firebase.firestore().collection("Animes").doc("b32Y1yD4rl3csjsJ8DVJ").delete().then(function() {
+    console.log("Registro Eliminado Correctamente!");
+}).catch(function(error) {
+    console.error("Error eliminando el registro : ", error);
+});
+
       }
    })
