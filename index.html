@@ -58,8 +58,8 @@
           <li class="active"><a href="index.html">Inicio</a></li>
           <li><a href="#about">Nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
-          <li ng-show="!UsuarioLogueado"><a href="#">Iniciar Sesion</a></li>
-          <li ng-show="!UsuarioLogueado"><a href="registro.html">Registrarse</a></li>
+          <li ng-hide="UsuarioLogueado"><a href="iniciarSesion.html">Iniciar Sesion</a></li>
+          <li ng-hide="UsuarioLogueado"><a href="registro.html">Registrarse</a></li>
           <li ng-show="UsuarioLogueado"><a  href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -92,12 +92,12 @@
             <ul>
               <li><i class="ri-check-double-line"></i>Sube tu propio contenido</li>
               <li><i class="ri-check-double-line"></i>Pon tu propio precio</li>
-              <li><i class="ri-check-double-line"></i>El secreto esta en el anonimato</li>
+              <li><i class="ri-check-double-line"></i>El secreto esta en la calidad</li>
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <p>
-              Sube tu contenido erótico sin mostrar tu rostro, deja que la imaginación de nuestros clientes vuele, y trate de imaginar un mundo de posibilidades y fantasías.
+              Sube tu contenido anime, deja que la imaginación de nuestros clientes vuele, y trate de imaginar un mundo de posibilidades y aventuras.
             </p>
             <a href="#" class="btn-learn-more">Saber más</a>
           </div>
@@ -146,7 +146,7 @@
             <div class="card" style='background-image: url("assets/img/our-values-1.jpg");'>
               <div class="card-body">
                 <h5 class="card-title"><a href="">Nuestra misión</a></h5>
-                <p class="card-text">LLevar a nuestros clientes a un mundo de exitación y lujuria</p>
+                <p class="card-text">LLevar a nuestros clientes a un mundo de aventuras</p>
                 <div class="read-more"><a href="#"><i class="icofont-arrow-right"></i>en el anonimato</a></div>
               </div>
             </div>
@@ -221,7 +221,7 @@
             <div class="icon-box">
               <div class="icon"><i class="las la-tachometer-alt" style="color:#41cf2e;"></i></div>
               <h4 class="title"><a href="">Historias</a></h4>
-              <p class="description">Conoce las historias mas eroticas de nuestros creadores de contenido</p>
+              <p class="description">Conoce las historias de anime de creadores de contenido</p>
             </div>
           </div>
 
@@ -252,7 +252,7 @@
         <div class="text-center">
           <h3>Registrate</h3>
           <p> Comienza ahora y forma parte de nuestra comunidad</p>
-          <a class="cta-btn" href="#">Registrate</a>
+          <a class="cta-btn" href="registro.html">Registrate</a>
         </div>
 
       </div>
@@ -351,7 +351,7 @@
 
     <div class="container footer-bottom clearfix">
       <div class="copyright">
-        &copy; Copyright <strong><span>Lust</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Luis Eduardo Carrera Bernal</span></strong>. All Rights Reserved
       </div>
       
     </div>

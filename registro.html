@@ -46,14 +46,14 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav class="nav-menu d-none d-lg-block">
+       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
+          <li class="active"><a href="index.html">Inicio</a></li>
           <li><a href="#about">Nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
-          <li ng-show="UsuarioLogueado != true"><a href="#">Iniciar Sesion</a></li>
-          <li class="active" ng-show="UsuarioLogueado != true"><a href="registro.html">Registrarse</a></li>
-          <li ng-show="UsuarioLogueado == true"><a  href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
+          <li ng-hide="UsuarioLogueado"><a href="iniciarSesion.html">Iniciar Sesion</a></li>
+          <li ng-hide="UsuarioLogueado"><a href="registro.html">Registrarse</a></li>
+          <li ng-show="UsuarioLogueado"><a  href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -87,12 +87,12 @@
        <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" ng-model="correoRegistronuevo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@ejemplo.com.mx">
+    <input type="email" ng-model="correoRegistronuevo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="ejemplo@ejemplo.com.mx">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" ng-model="contraseniaRegistronuevo" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+    <input type="password" ng-model="contraseniaRegistronuevo" required class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
   </div>
   <div class="form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
