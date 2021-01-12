@@ -11,6 +11,31 @@
    firebase.initializeApp(config);
    firebase.analytics();
    angular.module('modulo', ['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
+
+ /*Obtiene toda la informacion del nodo de perfiles de la firebase*/
+ let list = [];
+    const rootRefAnime = firebase.firestore().collection('Animes').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log("Cargo Animes")
+        console.log(`${doc.id} => ${doc.data()}`);
+        list.push(doc.data());
+    });
+     $scope.animesTablaPrincipal = list;
+     console.log("Tabla animes cargada")
+console.log($scope.animesTablaPrincipal)
+$scope.$apply();
+});
+
+
+/*
+     console.log(rootRefAnime)
+    $scope.animesTablaPrincipal = $firebaseArray(rootRefAnime);
+    $scope.animesTablaPrincipal.$loaded().then(function() {
+      console.log("Tabla cargada con exito")
+*/
+
+
+
       console.log("Js Principal Cargado con exito")
       var provider = new firebase.auth.GoogleAuthProvider();
       $scope.UsuarioLogueado = false;
