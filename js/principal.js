@@ -163,4 +163,52 @@ doc = doc.toString()
 
 
       }
+
+$scope.actualizarAnime = function(){
+
+  var AnimeaActualizar = firebase.firestore().collection("Animes").doc($scope.animeaActualizar.id);
+  console.log($scope.animeaActualizar)
+
+// Set the "capital" field of the city 'DC'
+return AnimeaActualizar.update({
+
+  Nombre:$scope.animeaActualizar.Nombre,
+  Creador:$scope.animeaActualizar.Creador,
+  Genero:$scope.animeaActualizar.Genero 
+})
+.then(function() {
+    console.log("Document successfully updated!");
+    alert("Registro editado con exito")
+    location.reload();
+})
+.catch(function(error) {
+    // The document probably doesn't exist.
+    console.error("Error updating document: ", error);
+});
+
+}
+
+      $scope.actualizarRegistroAnimes = function(id) {
+         $scope.animeaActualizar1 = firebase.firestore().collection("Animes").doc(id);
+
+$scope.animeaActualizar1.get().then(function(doc) {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+        $scope.animeaActualizar = doc.data()
+        $scope.animeaActualizar.id=id;
+        console.log($scope.animeaActualizar)
+        $scope.$apply();
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+        
+
+      }
+
+
+
    })
