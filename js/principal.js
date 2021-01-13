@@ -13,8 +13,12 @@
    angular.module('modulo', ['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
       /*Obtiene toda la informacion del nodo de perfiles de la firebase*/
 
+ 
+ const imagesRef = firebase.storage().ref('Animes/');
 
 
+//var storage = firebase.firestore()
+//console.log(storage)
 
 
 //$scope.perfiles.$indexFor(index)
@@ -209,6 +213,39 @@ $scope.animeaActualizar1.get().then(function(doc) {
 
       }
 
+
+$scope.subirArchivoAnime = function(){
+  const file = document.querySelector('#inputGroupFile02').files[0];
+
+   const name = file.name
+
+                const metadata = {
+
+                    contentType: file.type
+
+                }
+
+                const task = imagesRef.child(name).put(file, metadata);
+
+
+                task.then(snapshot => snapshot.imagesRef.getDownloadURL())
+                    .then(url => {
+
+                        ////console.log(url);
+                        $scope.UrlDeimagensubida = url;
+                        ////console.log("imagen subida con exito");
+
+
+
+
+                        const imagenElement = document.querySelector("#Prueba");
+                        imagenElement.src = url;
+                        console.log(imagenElement.src)
+
+
+                    });
+
+}
 
 
    })
