@@ -46,6 +46,7 @@ let list2 = [];
     });
 
     console.log("Js Principal Cargado con exito")
+
     var provider = new firebase.auth.GoogleAuthProvider();
     $scope.UsuarioLogueado = false;
     firebase.auth().onAuthStateChanged((user) => {
@@ -62,6 +63,11 @@ let list2 = [];
       } else {
         // User is signed out
         // ...
+        console.log(window.location.href)
+        console.log(window.location.hostname)
+        console.log(window.location.pathname)
+        console.log(window.location.protocol)
+        
         console.log("Sin User id observador")
         console.log("El usuario no esta loogueado")
         $scope.UsuarioLogueado = false;
@@ -162,7 +168,7 @@ alert("Tienes que ingresar una imagen antes de guardar un nuevo anime")
   var n = d.getDate()
   var y = d.getFullYear()
   var p = d.getMonth()+1;
-  var fecha = n+"/"+p+"/"+y;
+  var fecha = n+"-"+p+"-"+y;
 
   firebase.firestore().collection("Animes").add({
         Nombre: $scope.nombreAnimeNuevo,
