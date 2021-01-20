@@ -68,6 +68,10 @@ let list2 = [];
         console.log(window.location.pathname)
         console.log(window.location.protocol)
         
+        if(window.location.pathname=="/Lust/cPanel.html"||window.location.pathname=="/C:/Users/CBLE/Documents/GitHub/Lust/cPanel.html"){
+          window.location.href = "index.html"
+        }
+        
         console.log("Sin User id observador")
         console.log("El usuario no esta loogueado")
         $scope.UsuarioLogueado = false;
