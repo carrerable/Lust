@@ -4,18 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>Lust</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
-
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
@@ -24,49 +20,56 @@
   <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
   <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
- 
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body ng-app="modulo" ng-controller="controlador">
-
+  <section id="hero">
+    <div class="hero-container">
+      <h1>Bienvenido a Lust</h1>
+      <h2>Servicio de suscripción de contenido Anime.</h2>
+      <a href="#about" class="btn-get-started scrollto">Conoce más</a>
+    </div>
+  </section><!-- End Hero -->
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="container-fluid d-flex align-items-center justify-content-between">
-
       <h1 class="logo"><a href="index.html">Lust</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-       <nav class="nav-menu d-none d-lg-block">
+      <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.html">Inicio</a></li>
           <li><a href="#about">Nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
           <li ng-hide="UsuarioLogueado"><a href="iniciarSesion.html">Iniciar Sesion</a></li>
           <li ng-hide="UsuarioLogueado"><a href="registro.html">Registrarse</a></li>
-          <li ng-show="UsuarioLogueado"><a  href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
+          <li ng-show="UsuarioLogueado"><a href="#" ng-click="cerrarSesion()">Cerrar Sesion</a></li>
+          <li ng-show="UsuarioLogueado"><a href="cPanel.html">Panel de control</a></li>
         </ul>
       </nav><!-- .nav-menu -->
-
       <div class="header-social-links">
         <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
         <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
         <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
         <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
       </div>
-
     </div>
   </header><!-- End Header -->
-
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
