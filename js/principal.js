@@ -59,6 +59,12 @@ let list2 = [];
         console.log("Variable UsuarioLogueado : " + $scope.UsuarioLogueado)
         console.log("User id observador " + uid)
         console.log("El usuario esta loogueado")
+        if(window.location.pathname=="/Lust/iniciarSesion.html"||window.location.pathname=="/C:/Users/CBLE/Documents/GitHub/Lust/iniciarSesion.html"){
+          window.location.href = "index.html"
+        }
+        if(window.location.pathname=="/Lust/registro.html"||window.location.pathname=="/C:/Users/CBLE/Documents/GitHub/Lust/registro.html"){
+          window.location.href = "index.html"
+        }
         // ...
       } else {
         // User is signed out
@@ -67,7 +73,7 @@ let list2 = [];
         console.log(window.location.hostname)
         console.log(window.location.pathname)
         console.log(window.location.protocol)
-        
+
         if(window.location.pathname=="/Lust/cPanel.html"||window.location.pathname=="/C:/Users/CBLE/Documents/GitHub/Lust/cPanel.html"){
           window.location.href = "index.html"
         }
