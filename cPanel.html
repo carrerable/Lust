@@ -38,13 +38,7 @@
 </head>
 
 <body ng-app="modulo" ng-controller="controlador">
-  <section id="hero">
-    <div class="hero-container">
-      <h1>Bienvenido a Lust</h1>
-      <h2>Servicio de suscripción de contenido Anime.</h2>
-      <a href="#about" class="btn-get-started scrollto">Conoce más</a>
-    </div>
-  </section><!-- End Hero -->
+  
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="container-fluid d-flex align-items-center justify-content-between">
@@ -188,6 +182,9 @@
                             <span class="btn input-group-text" ng-click="subirArchivoAnime()">Subir</span>
                           </div>
                         </div>
+                        <div id="myProgress">
+  <div id="myBar"></div>
+</div>
                         <div class="form-group">
                           <img id="Prueba" style="width: 100%;height: 300px;">
                         </div>
@@ -371,3 +368,15 @@
         });
 
 </script>
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+</style>
