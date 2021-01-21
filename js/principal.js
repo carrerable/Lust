@@ -180,24 +180,31 @@ alert("Tienes que ingresar una imagen antes de guardar un nuevo anime")
   var p = d.getMonth()+1;
   var fecha = n+"-"+p+"-"+y;
 
-  firebase.firestore().collection("Animes").add({
-        Nombre: $scope.nombreAnimeNuevo,
+
+
+
+db.collection("Animes").doc($scope.nombreAnimeNuevo).set({
+     Nombre: $scope.nombreAnimeNuevo,
         Genero: $scope.generoAnimeNuevo,
         Creador: $scope.creadorAnimeNuevo,
         UrlImagen:$scope.UrlDeimagensubida,
         Fecha: fecha,
-      }).then(function() {
-        console.log("Document successfully written!");
+})
+.then(function() {
+     console.log("Document successfully written!");
         alert("Se guardo el registro de forma exitosa")
         $scope.nombreAnimeNuevo = "";
         $scope.generoAnimeNuevo = "";
         $scope.creadorAnimeNuevo = "";
         $scope.UrlDeimagensubida= "";
         location.reload();
-      }).catch(function(error) {
-        console.error("Error writing document: ", error);
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
         alert("Error al intentar guarda registro nuevo")
-      });
+});
+
+
 
 }
 
