@@ -336,6 +336,7 @@ function move() {
       console.log("Se eliminara :" + id)
       firebase.firestore().collection("Generos").doc(id).delete().then(function() {
         console.log("Registro Eliminado Correctamente!");
+        alert("Registro Eliminado Correctamente!")
         location.reload();
       }).catch(function(error) {
         console.error("Error eliminando el registro : ", error);
@@ -352,9 +353,11 @@ function move() {
           $scope.$apply();
         } else {
           console.log("No such document!");
+          alert("No such document!")
         }
       }).catch(function(error) {
         console.log("Error getting document:", error);
+        alert("Error getting documen")
       });
     }
     $scope.actualizarGenero = function() {
