@@ -319,7 +319,7 @@ function move() {
         doc = doc.toString()
       }
       console.log(doc);
-      firebase.firestore().collection("Generos").add({
+      firebase.firestore().collection("Generos").doc($scope.nombreGeneroNuevo).set({
         Genero: $scope.nombreGeneroNuevo,
         Fecha: fecha,
       }).then(function() {
