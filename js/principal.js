@@ -182,8 +182,7 @@ alert("Tienes que ingresar una imagen antes de guardar un nuevo anime")
 
 
 
-
-db.collection("Animes").doc($scope.nombreAnimeNuevo).set({
+firebase.firestore().collection("Animes").doc($scope.nombreAnimeNuevo).set({
      Nombre: $scope.nombreAnimeNuevo,
         Genero: $scope.generoAnimeNuevo,
         Creador: $scope.creadorAnimeNuevo,
