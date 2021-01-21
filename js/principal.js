@@ -13,7 +13,6 @@
    angular.module('modulo', ['firebase']).controller('controlador', function($scope, $firebaseObject, $firebaseArray, $filter) {
     /*Obtiene toda la informacion del nodo de perfiles de la firebase*/
     const ref = firebase.storage().ref('Animes/');
-
     let list = [];
     const rootRefAnime = firebase.firestore().collection('Animes').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -28,9 +27,7 @@
       console.log($scope.animesTablaPrincipal)
       $scope.$apply();
     });
-
-
-let list2 = [];
+    let list2 = [];
     const rootRefGenero = firebase.firestore().collection('Generos').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         console.log("Cargo Generos")
@@ -44,9 +41,7 @@ let list2 = [];
       console.log($scope.generosTablaPrincipal)
       $scope.$apply();
     });
-
     console.log("Js Principal Cargado con exito")
-
     var provider = new firebase.auth.GoogleAuthProvider();
     $scope.UsuarioLogueado = false;
     firebase.auth().onAuthStateChanged((user) => {
@@ -59,10 +54,10 @@ let list2 = [];
         console.log("Variable UsuarioLogueado : " + $scope.UsuarioLogueado)
         console.log("User id observador " + uid)
         console.log("El usuario esta loogueado")
-        if(window.location.pathname=="/Lust/iniciarSesion.html"||window.location.pathname=="/C:/Users/CBLE/Documents/GitHub/Lust/iniciarSesion.html"){
+        if (window.location.pathname == "/Lust/iniciarSesion.html" || window.location.pathname == "/C:/Users/CBLE/Documents/GitHub/Lust/iniciarSesion.html") {
           window.location.href = "index.html"
         }
-        if(window.location.pathname=="/Lust/registro.html"||window.location.pathname=="/C:/Users/CBLE/Documents/GitHub/Lust/registro.html"){
+        if (window.location.pathname == "/Lust/registro.html" || window.location.pathname == "/C:/Users/CBLE/Documents/GitHub/Lust/registro.html") {
           window.location.href = "index.html"
         }
         // ...
@@ -73,11 +68,9 @@ let list2 = [];
         console.log(window.location.hostname)
         console.log(window.location.pathname)
         console.log(window.location.protocol)
-
-        if(window.location.pathname=="/Lust/cPanel.html"||window.location.pathname=="/C:/Users/CBLE/Documents/GitHub/Lust/cPanel.html"){
+        if (window.location.pathname == "/Lust/cPanel.html" || window.location.pathname == "/C:/Users/CBLE/Documents/GitHub/Lust/cPanel.html") {
           window.location.href = "index.html"
         }
-        
         console.log("Sin User id observador")
         console.log("El usuario no esta loogueado")
         $scope.UsuarioLogueado = false;
@@ -153,16 +146,13 @@ let list2 = [];
       });
     }
     $scope.agregarAnimeNuevo = function() {
-
-if($scope.nombreAnimeNuevo == ""||$scope.nombreAnimeNuevo ==null){
-alert("El nombre del anime no puede estar vacio")
-}else if ($scope.generoAnimeNuevo == ""||$scope.generoAnimeNuevo ==null){
-  alert("El genero del anime no puede estar vacio")
-}else if ($scope.creadorAnimeNuevo == ""||$scope.creadorAnimeNuevo ==null){
-  alert("El nombre del creador del anime no puede estar vacio")
-}
-
-
+      if ($scope.nombreAnimeNuevo == "" || $scope.nombreAnimeNuevo == null) {
+        alert("El nombre del anime no puede estar vacio")
+      } else if ($scope.generoAnimeNuevo == "" || $scope.generoAnimeNuevo == null) {
+        alert("El genero del anime no puede estar vacio")
+      } else if ($scope.creadorAnimeNuevo == "" || $scope.creadorAnimeNuevo == null) {
+        alert("El nombre del creador del anime no puede estar vacio")
+      }
       if ($scope.animesTablaPrincipal.length == 0) {
         var doc = 0
         doc = doc.toString()
@@ -171,43 +161,33 @@ alert("El nombre del anime no puede estar vacio")
         doc = doc.toString()
       }
       console.log(doc);
-if($scope.UrlDeimagensubida == null || $scope.UrlDeimagensubida ==""){
-alert("Tienes que ingresar una imagen antes de guardar un nuevo anime")
-}else{
-  var d = new Date();
-  var n = d.getDate()
-  var y = d.getFullYear()
-  var p = d.getMonth()+1;
-  var fecha = n+"-"+p+"-"+y;
-
-
-
-firebase.firestore().collection("Animes").doc($scope.nombreAnimeNuevo).set({
-     Nombre: $scope.nombreAnimeNuevo,
-        Genero: $scope.generoAnimeNuevo,
-        Creador: $scope.creadorAnimeNuevo,
-        UrlImagen:$scope.UrlDeimagensubida,
-        Fecha: fecha,
-})
-.then(function() {
-     console.log("Document successfully written!");
-        alert("Se guardo el registro de forma exitosa")
-        $scope.nombreAnimeNuevo = "";
-        $scope.generoAnimeNuevo = "";
-        $scope.creadorAnimeNuevo = "";
-        $scope.UrlDeimagensubida= "";
-        location.reload();
-})
-.catch(function(error) {
-    console.error("Error writing document: ", error);
-        alert("Error al intentar guarda registro nuevo")
-});
-
-
-
-}
-
-      
+      if ($scope.UrlDeimagensubida == null || $scope.UrlDeimagensubida == "") {
+        alert("Tienes que ingresar una imagen antes de guardar un nuevo anime")
+      } else {
+        var d = new Date();
+        var n = d.getDate()
+        var y = d.getFullYear()
+        var p = d.getMonth() + 1;
+        var fecha = n + "-" + p + "-" + y;
+        firebase.firestore().collection("Animes").doc($scope.nombreAnimeNuevo).set({
+          Nombre: $scope.nombreAnimeNuevo,
+          Genero: $scope.generoAnimeNuevo,
+          Creador: $scope.creadorAnimeNuevo,
+          UrlImagen: $scope.UrlDeimagensubida,
+          Fecha: fecha,
+        }).then(function() {
+          console.log("Document successfully written!");
+          alert("Se guardo el registro de forma exitosa")
+          $scope.nombreAnimeNuevo = "";
+          $scope.generoAnimeNuevo = "";
+          $scope.creadorAnimeNuevo = "";
+          $scope.UrlDeimagensubida = "";
+          location.reload();
+        }).catch(function(error) {
+          console.error("Error writing document: ", error);
+          alert("Error al intentar guarda registro nuevo")
+        });
+      }
     }
     $scope.actualizarAnime = function() {
       var AnimeaActualizar = firebase.firestore().collection("Animes").doc($scope.animeaActualizar.id);
@@ -243,87 +223,71 @@ firebase.firestore().collection("Animes").doc($scope.nombreAnimeNuevo).set({
         console.log("Error getting document:", error);
       });
     }
-   
     $scope.subirArchivoAnime = function() {
-
-
-     const file = document.querySelector('#inputGroupFile02').files[0];
+      const file = document.querySelector('#inputGroupFile02').files[0];
       const name = file.name
-      if(name =="" || name== null){
+      if (name == "" || name == null) {
         alert("Primero tiene que seleccionar un archivo")
-
-      }else{
+      } else {
         const metadata = {
-        contentType: file.type
+          contentType: file.type
+        }
+        if ($scope.nombreAnimeNuevo == "" || $scope.nombreAnimeNuevo == null) {
+          alert("Necesitas agregar un nombre al anime para poder subir una foto")
+        } else {
+          // Upload file and metadata to the object 'images/mountains.jpg'
+          var uploadTask = ref.child($scope.nombreAnimeNuevo + '/' + file.name).put(file, metadata);
+          // Listen for state changes, errors, and completion of the upload.
+          uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+            function(snapshot) {
+              // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+              var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log('Upload is ' + progress + '% done');
+              switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                  console.log('Upload is paused');
+                  break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                  console.log('Upload is running');
+                  break;
+              }
+            },
+            function(error) {
+              // A full list of error codes is available at
+              // https://firebase.google.com/docs/storage/web/handle-errors
+              switch (error.code) {
+                case 'storage/unauthorized':
+                  // User doesn't have permission to access the object
+                  break;
+                case 'storage/canceled':
+                  // User canceled the upload
+                  break;
+                case 'storage/unknown':
+                  // Unknown error occurred, inspect error.serverResponse
+                  break;
+              }
+            },
+            function() {
+              // Upload completed successfully, now we can get the download URL
+              uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                console.log('File available at', downloadURL);
+                $scope.UrlDeimagensubida = downloadURL;
+                const imagenElement = document.querySelector("#Prueba");
+                imagenElement.src = downloadURL;
+              });
+            });
+        }
       }
-
-      if($scope.nombreAnimeNuevo==""||$scope.nombreAnimeNuevo==null){
-        alert("Necesitas agregar un nombre al anime para poder subir una foto")
-      }else{
-
-        // Upload file and metadata to the object 'images/mountains.jpg'
-var uploadTask = ref.child($scope.nombreAnimeNuevo+'/' + file.name).put(file, metadata);
-
-// Listen for state changes, errors, and completion of the upload.
-uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
-  function(snapshot) {
-    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-    switch (snapshot.state) {
-      case firebase.storage.TaskState.PAUSED: // or 'paused'
-        console.log('Upload is paused');
-        break;
-      case firebase.storage.TaskState.RUNNING: // or 'running'
-        console.log('Upload is running');
-        break;
     }
-  }, function(error) {
-
-  // A full list of error codes is available at
-  // https://firebase.google.com/docs/storage/web/handle-errors
-  switch (error.code) {
-    case 'storage/unauthorized':
-      // User doesn't have permission to access the object
-      break;
-
-    case 'storage/canceled':
-      // User canceled the upload
-      break;
-
-    
-
-    case 'storage/unknown':
-      // Unknown error occurred, inspect error.serverResponse
-      break;
-  }
-}, function() {
-  // Upload completed successfully, now we can get the download URL
-  uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-    console.log('File available at', downloadURL);
-    $scope.UrlDeimagensubida = downloadURL;
-        const imagenElement = document.querySelector("#Prueba");
-        imagenElement.src = downloadURL;
-  });
-});
+    $scope.agregarGeneroNuevo = function() {
+      var d = new Date();
+      var n = d.getDate()
+      var y = d.getFullYear()
+      var p = d.getMonth() + 1;
+      var fecha = n + "/" + p + "/" + y;
+      if ($scope.nombreGeneroNuevo == "" || $scope.nombreGeneroNuevo == null) {
+        alert("El nombre del genero no puede estar vacio")
       }
-      }
-      
-    }
-
- $scope.agregarGeneroNuevo = function() {
-
-   var d = new Date();
-  var n = d.getDate()
-  var y = d.getFullYear()
-  var p = d.getMonth()+1;
-  var fecha = n+"/"+p+"/"+y;
-
-if($scope.nombreGeneroNuevo == ""||$scope.nombreGeneroNuevo ==null){
-alert("El nombre del genero no puede estar vacio")
-}
-
-
       if ($scope.nombreGeneroNuevo.length == 0) {
         var doc = 0
         doc = doc.toString()
@@ -332,28 +296,20 @@ alert("El nombre del genero no puede estar vacio")
         doc = doc.toString()
       }
       console.log(doc);
-
-
-  firebase.firestore().collection("Generos").add({
+      firebase.firestore().collection("Generos").add({
         Genero: $scope.nombreGeneroNuevo,
         Fecha: fecha,
       }).then(function() {
         console.log("Document successfully written!");
         alert("Se guardo el registro de forma exitosa")
         $scope.nombreGeneroNuevo = "";
-   
         location.reload();
       }).catch(function(error) {
         console.error("Error writing document: ", error);
         alert("Error al intentar guarda registro nuevo")
       });
-
-
-
-      
     }
-
-      $scope.borrarRegistroGenero = function(id) {
+    $scope.borrarRegistroGenero = function(id) {
       console.log("Se eliminara :" + id)
       firebase.firestore().collection("Generos").doc(id).delete().then(function() {
         console.log("Registro Eliminado Correctamente!");
@@ -362,9 +318,7 @@ alert("El nombre del genero no puede estar vacio")
         console.error("Error eliminando el registro : ", error);
       });
     }
-
-      
-       $scope.actualizarRegistroGenero = function(id) {
+    $scope.actualizarRegistroGenero = function(id) {
       $scope.generoaActualizar = firebase.firestore().collection("Generos").doc(id);
       $scope.generoaActualizar.get().then(function(doc) {
         if (doc.exists) {
@@ -380,14 +334,11 @@ alert("El nombre del genero no puede estar vacio")
         console.log("Error getting document:", error);
       });
     }
-
-
-
-     $scope.actualizarGenero = function() {
+    $scope.actualizarGenero = function() {
       var AnimeaActualizar = firebase.firestore().collection("Generos").doc($scope.generoaActualizar.id);
       console.log($scope.animeaActualizar)
       return AnimeaActualizar.update({
-        Genero:$scope.generoaActualizar.Genero,
+        Genero: $scope.generoaActualizar.Genero,
       }).then(function() {
         console.log("Document successfully updated!");
         alert("Registro editado con exito")
@@ -398,6 +349,3 @@ alert("El nombre del genero no puede estar vacio")
       });
     }
    });
-
-
-  
