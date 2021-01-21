@@ -250,7 +250,11 @@ db.collection("Animes").doc($scope.nombreAnimeNuevo).set({
 
      const file = document.querySelector('#inputGroupFile02').files[0];
       const name = file.name
-      const metadata = {
+      if(name =="" || name== null){
+        alert("Primero tiene que seleccionar un archivo")
+
+      }else{
+        const metadata = {
         contentType: file.type
       }
 
@@ -304,6 +308,8 @@ uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
   });
 });
       }
+      }
+      
     }
 
  $scope.agregarGeneroNuevo = function() {
