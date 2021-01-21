@@ -307,7 +307,7 @@ function move() {
       var n = d.getDate()
       var y = d.getFullYear()
       var p = d.getMonth() + 1;
-      var fecha = n + "/" + p + "/" + y;
+      var fecha = n + "-" + p + "-" + y;
       if ($scope.nombreGeneroNuevo == "" || $scope.nombreGeneroNuevo == null) {
         alert("El nombre del genero no puede estar vacio")
       }
